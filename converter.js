@@ -54,13 +54,6 @@ function convertThatTemp() {
 };
 
 
-//Anynomous function because we didn't name it, we embedded a function instead. AKA lamda.
-//this function makes it so when you type in the input box, it changes the text in the output
-input.addEventListener("keyup", function(submit){
-	// console.log("placeholder2", placeholder2);
-
-	
-});
 
 function resetForm(){
             input.value = "";
