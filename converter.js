@@ -70,7 +70,7 @@ function convertThatTemp() {
 
 
 function resetForm(){
-            input.value = "";
+	location.reload();
 };
 
 
