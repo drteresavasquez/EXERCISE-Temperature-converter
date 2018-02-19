@@ -32,7 +32,7 @@ function convertThatTemp(val, conversion) {
 	switch(conversion){
 		case 'celsius':
 		val = val / 1.8;
-		val > 32 ? output.innerHTML = `<p class="red">Your converted temp is ${input} Degrees Celsius</p>` : val< 0 ? output.innerHTML = `<p class="blue">Your converted temp is ${input} Degrees Celsius</p>` : output.innerHTML = `<p class="green">Your converted temp is ${input} Degrees Celsius</p>`
+		val > 32 ? output.innerHTML = `<p class="red">Your converted temp is ${val} Degrees Celsius</p>` : val< 0 ? output.innerHTML = `<p class="blue">Your converted temp is ${val} Degrees Celsius</p>` : output.innerHTML = `<p class="green">Your converted temp is ${val} Degrees Celsius</p>`
 
 		case 'fahrenheit':
 		val = (val * 1.8) + 32;
