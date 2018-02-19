@@ -6,17 +6,18 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-			Input a Temp: <input type="number" id="userInput"><br>
+			<div>Input a Temp: <input type="number" id="userInput"><br>
 
 			<input type="radio" name="tempConvert" value="1" id="celsius"/>Celsius<br>
 			<input type="radio" name="tempConvert" value="2" id="fahrenheit"/>Fahrenheit<br>
 			
-			 <input type="submit" value="Convert that Temp, Yo!" onclick="convertThatTemp()" />
+			 <input id= "submit" type="submit" value="Convert that Temp, Yo!"/>
 			 <button onclick="resetForm()">Reset</button>
+			</div>
 
 
 		<div id="convertedTemp"></div>
 
-<script type="text/javascript" src="converter.js"></script>
+<script type="text/javascript" src="converter_new.js"></script>
 </body>
 </html>
