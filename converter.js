@@ -1,43 +1,50 @@
 console.log("converter.js, yo!");
 
+//here I have assigned variable to the form elements submit button and radio button
 let output = document.getElementById("convertedTemp");
 let celsius = document.getElementById("celsius");
 let fahrenheit = document.getElementById("fahrenheit");
 let input = document.getElementById("userInput");
-let button = document.getElementById("submit");
 
-window.addEventListener('keyup', function (e) {
-	if (e.which === 13 && celsius.checked) {
-		e.preventDefault();
-		convertThatTemp(Number(input.value), "celsius");
-	}else if(e.which === 13 && fahrenheit.checked){
-		e.preventDefault();
-		convertThatTemp(Number(input.value), "fahrenheit");
+celsius.addEventListener('keyup', function (pushEnter) {
+	//______.which tells javascript which key. 13 = enter. If I put other key codes, that key would work instead.
+	if (pushEnter.which === 13) {
+		convertThatTemp();
 	}
-});
+})
 
-button.addEventListener('click', function(e){
-	if (celsius.checked) {
-		e.preventDefault();
-		convertThatTemp(Number(input.value), 'celsius');
-	}else if(fahrenheit.checked){
-		e.preventDefault();
-		convertThatTemp(Number(input.value), 'fahrenheit');
-	}else{
+fahrenheit.addEventListener('keyup', function (pushEnter) {
+	//______.which tells javascript which key. 13 = enter. If I put other key codes, that key would work instead.
+	if (pushEnter.which === 13) {
+		convertThatTemp();
+	}
+})
+
+
+function convertThatTemp() {
+	input = Number(input.value);
+	if (celsius.checked === false && fahrenheit.checked === false) {
 		alert("Please select a conversion, Yo!");
+	} else if (celsius.checked) {
+		input = parseInt((input - 32) / 1.8);
+		if (input > 32) {
+			output.innerHTML = `<p class="red">Your converted temp is ${input} Degrees Celsius</p>`;
+		} else if (input < 0) {
+			output.innerHTML = `<p class="blue">Your converted temp is ${input} Degrees Celsius</p>`;
+		} else {
+			output.innerHTML = `<p class="green">Your converted temp is ${input} Degrees Celsius</p>`;
+		}
+	} else if (fahrenheit.checked) {
+		input = parseInt((input * 1.8) + 32);
+		if (input > 90) {
+			output.innerHTML = `<p class="red">Your converted temp is ${input} Degrees Fahrenheit</p>`;
+		} else if (input < 32) {
+			output.innerHTML = `<p class="blue">Your converted temp is ${input} °F</p>`;
+		} else {
+			output.innerHTML = `<p class="green">Your converted temp is ${input} °F</p>`;
+		}
 	}
-});
 
-function convertThatTemp(val, conversion) {
-	switch(conversion){
-		case 'celsius':
-		val = val / 1.8;
-		val > 32 ? output.innerHTML = `<p class="red">Your converted temp is ${val} Degrees Celsius</p>` : val< 0 ? output.innerHTML = `<p class="blue">Your converted temp is ${val} Degrees Celsius</p>` : output.innerHTML = `<p class="green">Your converted temp is ${val} Degrees Celsius</p>`
-
-		case 'fahrenheit':
-		val = (val * 1.8) + 32;
-		val > 90 ? output.innerHTML = `<p class="red">Your converted temp is ${val} Degrees Fahrenheit</p>` : val < 32 ? output.innerHTML = `<p class="blue">Your converted temp is ${val} °F</p>` : output.innerHTML = `<p class="green">Your converted temp is ${val} °F</p>`
-	}
 };
 
 function resetForm() {
